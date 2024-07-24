@@ -1,0 +1,55 @@
+:root{
+    --main-bg-color: #ccd0cf;
+    --main-text-color:#11212d ;
+    --main-border-color: #ccc;
+    --main-border-radius: 5px;
+    --main-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    --main-transition: all 0.3s ease;
+    --main-font-size: 16px;
+    --main-line-height: 1.5;
+    --main-font-family: 'Montserrat', sans-serif;
+    --main-max-width: 1200px;
+    --main-padding: 10px;
+    --main-margin: 10px;
+    /* dark mode colors */
+    --dark-bg-color: #06141b;
+    --dark-text-color: #4a5c6a;
+    --dark-border-color: #333;
+    --dark-box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+body{
+    font-size: var(--main-font-size);
+    line-height: var(--main-line-height);
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    margin: 0;
+    padding: 0;
+    transition: var(--main-transition);
+}
+
+.app-logo{
+    display: flex;
+    align-items: center;
+    span{
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--main-text-color);
+    }
+    img{
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+}
+.search{
+    display :flex;
+    align-items: center;
+
+}
+.nav{
+    background-color: var(--main-bg-color);
+    display: flex;
+    justify-content: space-between;
+}

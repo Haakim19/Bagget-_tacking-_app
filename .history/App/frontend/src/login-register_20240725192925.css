@@ -20,9 +20,7 @@ h1.app-name{
     
     margin-bottom: 20px;
     text-align: center;
-    background: linear-gradient(to left, rgba(203, 23, 23, 0.5), rgba(14, 99, 141, 0.5));
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    color:linear-gradient(90deg, #0dbc9c, #0d9bc9);
 }
 .form.title{
     font-size: 2rem;

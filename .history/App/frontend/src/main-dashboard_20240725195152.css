@@ -5,15 +5,5 @@ body{
     background-repeat: no-repeat;
 }
 .left-sidebar{
-    background: #d24646;
-}
-.right-sidebar{
-    background: #5b46d2;
-}
-.middlebar{
-    background: #1a03e7;
-}
-
-.navigation-bar{
-    background: #020202;
+    background: #000;
 }

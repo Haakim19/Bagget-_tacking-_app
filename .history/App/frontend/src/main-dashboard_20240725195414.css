@@ -4,6 +4,11 @@ body{
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
+div{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .left-sidebar{
     background: #d24646;
 }

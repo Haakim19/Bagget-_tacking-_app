@@ -1,0 +1,10 @@
+body{
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background:linear-gradient(-130deg,rgba(255, 255, 255, 0.5), rgba(14, 99, 141, 0.5));
+    background-size: cover;
+}

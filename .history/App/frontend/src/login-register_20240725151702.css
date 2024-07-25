@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Courier New', Courier, monospace;
+}
+
+body{
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background:linear-gradient(rgba(113, 112, 112, 0.5),rgba(177, 65, 65, 0.5)),url('https://images.unsplash.com/photo-1557683316-973673baf926?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+}
+.form.title{
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.container{
+    background: #fff;
+    max-width: 450px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 50px auto;
+    box-shadow: 0 20px 35px rgba(0,0,1,0.9);
+}
+form{
+    margin: 0 2rem;
+}
+.form-title{
+    font-size: 2rem;
+    color:#000000;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    
+}
+
+input{
+    color:inherit;
+    width: 100%;
+    border: none;
+    background:transparent;
+    border-bottom: 1px solid #757575;
+    font-size: 15px;
+    padding-left: 1.5rem;
+}
+.input-group{
+    position: relative;
+    padding: 1% 0;
+}
+.input-group i{
+    position: absolute;
+    color: #000000;
+}
+input:focus{
+    background-color: transparent;
+    outline: transparent;
+    border-bottom:2px solid #880707;
+}
+input::placeholder{
+    color:transparent;
+}
+
+label{
+    font-size: 1rem;
+    color: #000000;
+    margin: 10px 0;
+    display: block;
+}

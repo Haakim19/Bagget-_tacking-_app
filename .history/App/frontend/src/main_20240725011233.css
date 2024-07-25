@@ -31,10 +31,9 @@ body{
     transition: var(--main-transition);
     /* background: linear-gradient(var(--main-bg-color), var(--dark-bg-color)); */
     background-attachment: fixed;
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position: center;
-    background-size: auto 100%;
+    /* background:no-repeat;
+    background-size: cover; */
+    background-image:cover;
 } 
 
 .app-logo{

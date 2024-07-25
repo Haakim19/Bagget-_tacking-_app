@@ -8,8 +8,7 @@
     <title>Login-Register</title>
 </head>
 <body>
-    <!-- register to the Website -->
-    <div class="container" id="sign-up" style="display: none;">
+    <div class="container" id="sign-up">
         <h1 class="form-title">Register</h1>
         <form action="" method="post">
             <div class="input-group">
@@ -47,15 +46,10 @@
                 <input type="text" name="address" id="address" placeholder="address" required>
                 <label for="address">Address</label>
             </div>
-            <input type="submit" class="btn" value="Register">
+            <input type="submit" class="btn" value="Sign Up">
         </form>
-        <div class="links">
-            <p>Already have an account?</p> 
-            <button id="sign-in-button"class="btn2">Sign In</button>       
-
-        </div>
+        <p class="link">Already have an account? <a href="login.html" >Login</a></p>        
     </div>
-    <!-- Log in to the website -->
     <div class="container" id="sign-in">
         <h1 class="form-title">Login</h1>
         <form action="" method="post">
@@ -71,12 +65,6 @@
             </div>
             <input type="submit" class="btn" value="Login">
         </form>
-        <div class="links">
-            <p> Don't have an account?</p>
-            <button id="sign-up-button" class="btn2">Sign Up</button>
-
-        </div>
-    </div>
-    <script src="login-register.js"></script>
+        <p class="link">Don't have an account? <a href="register.html" >Sign-Up</a></p>
 </body>
 </html>

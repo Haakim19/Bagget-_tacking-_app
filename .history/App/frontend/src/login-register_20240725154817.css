@@ -97,21 +97,7 @@ input:focus ~ label,input:not(:placeholder-shown) ~ label{
     background: linear-gradient(90deg, #0d9bc9, #0dbc9c);
 }
 
-.links {
-    display:flex;
+.link{
+    display: flex;
     justify-content: space-around;
-    padding: 0 4rem;
-    margin-top: 0.9rem;
-    font-weight: bold;
-}
-.links .btn2{
-    color: #0dbc9c;
-    text-decoration: none;
-    transition: 0.3s ease all;
-    border:none;
-    background-color:transparent;
-}
-.links .btn2:hover{
-    text-decoration: underline;
-    color: #0d9bc9;
 }

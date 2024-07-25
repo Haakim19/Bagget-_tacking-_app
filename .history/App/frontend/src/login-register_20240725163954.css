@@ -108,8 +108,7 @@ input:focus ~ label,input:not(:placeholder-shown) ~ label{
     color: #0dbc9c;
     text-decoration: none;
     transition: 0.3s ease all;
-    border:none;
-    background-color:transparent;
+    
 }
 .links .btn2:hover{
     text-decoration: underline;

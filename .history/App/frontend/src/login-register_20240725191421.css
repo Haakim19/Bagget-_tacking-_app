@@ -12,7 +12,7 @@ body{
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    background:linear-gradient(-130deg,rgba(255, 255, 255, 0.5), rgba(14, 99, 141, 0.5));
+    background:linear-gradient(rgba(113, 112, 112, 0.5),rgba(177, 65, 65, 0.5)),url('https://images.unsplash.com/photo-1557683316-973673baf926?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
     background-size: cover;
 }
 .form.title{
@@ -22,7 +22,7 @@ body{
     text-align: center;
 }
 .container{
-    background:linear-gradient(150deg, rgba(14, 99, 141, 0.5),rgba(255, 255, 255, 0.5));
+    background:transparent;
     max-width: 450px;
     width: 100%;
     padding: 15px;
@@ -58,7 +58,7 @@ input{
 }
 .input-group i{
     position: absolute;
-    color: #ffffff;
+    color: #000000;
 }
 input:focus{
     background-color: transparent;
@@ -106,7 +106,7 @@ input:focus ~ label,input:not(:placeholder-shown) ~ label{
     font-weight: bold;
 }
 .links .btn2{
-    color: #ffffff;
+    color: #0dbc9c;
     text-decoration: none;
     transition: 0.3s ease all;
     border:none;

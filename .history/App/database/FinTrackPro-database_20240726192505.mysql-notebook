@@ -1,0 +1,298 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\nCREATE DATABASE FinTrackPro;\nUSE FinTrackPro;\nCREATE TABLE Users (\n    User_id CHAR(6) NOT NULL,\n    First_name VARCHAR(100) NOT NULL,\n    Last_name VARCHAR(100) NOT NULL,\n    DOB DATE,\n    Email VARCHAR(100) NOT NULL UNIQUE,\n    Phone_number VARCHAR(15) NOT NULL,\n    Address VARCHAR(100) NOT NULL,\n    PRIMARY KEY (User_id)\n);\n\nCREATE TABLE Expense (\n    User_id CHAR(6) NOT NULL, \n    Expense_id INT(10) NOT NULL AUTO_INCREMENT,\n    Expense_name VARCHAR(50) NOT NULL,\n    Amount DECIMAL(8,2),\n    Description TEXT,\n    date_ DATE,\n    time_ TIME,\n    PRIMARY KEY(Expense_id),\n    FOREIGN KEY (User_id) REFERENCES Users(User_id)\n);\n\nCREATE TABLE Income (\n    User_id CHAR(6) NOT NULL, \n    Income_id INT(10) NOT NULL AUTO_INCREMENT,\n    Amount DECIMAL(8,2),\n    Description TEXT,\n    date_ DATE,\n    time_ TIME,\n    PRIMARY KEY(Income_id),\n    FOREIGN KEY (User_id) REFERENCES Users(User_id)\n);\n\nCREATE TABLE Goal (\n    User_id CHAR(6) NOT NULL, \n    Goal_id INT(10) NOT NULL AUTO_INCREMENT,\n    Goal_name VARCHAR(100) NOT NULL,\n    Description TEXT,\n    Start_date DATE,\n    End_date DATE,\n    PRIMARY KEY(Goal_id),\n    FOREIGN KEY (User_id) REFERENCES Users(User_id)\n);\n\nCREATE TABLE Account (\n    User_id CHAR(6) NOT NULL, \n    Account_id INT(10) NOT NULL AUTO_INCREMENT,\n    Account_number BIGINT(16) NOT NULL UNIQUE,\n    Account_type VARCHAR(30) NOT NULL,\n    Holder_name VARCHAR(100) NOT NULL,\n    branch_name VARCHAR(100) NOT NULL,\n    PRIMARY KEY(Account_id),\n    FOREIGN KEY (User_id) REFERENCES Users(User_id)\n);\n\nCREATE TABLE Bank (\n    Account_id INT(10) NOT NULL,\n    Bank_id INT(10) NOT NULL AUTO_INCREMENT,\n    Bank_name VARCHAR(100) NOT NULL,\n    Bank_type VARCHAR(50) NOT NULL,\n    PRIMARY KEY (Bank_id),\n    FOREIGN KEY (Account_id) REFERENCES Account(Account_id)\n);\n\nCREATE TABLE Bank_card (\n    User_id CHAR(6) NOT NULL,\n    Bank_id INT(10) NOT NULL,\n    Bank_card_id INT(10) NOT NULL AUTO_INCREMENT,\n    Bank_card_number BIGINT(16) NOT NULL UNIQUE,\n    Emv_number INT(3) NOT NULL,\n    Exp_date DATE,\n    PRIMARY KEY(Bank_card_id),\n    FOREIGN KEY (User_id) REFERENCES Users(User_id),\n    FOREIGN KEY (Bank_id) REFERENCES Bank(Bank_id)\n);\n\nCREATE TABLE Transactions (\n    Account_id INT(10) NOT NULL,\n    Transaction_id INT(10) NOT NULL AUTO_INCREMENT,\n    Transaction_name VARCHAR(50) NOT NULL,\n    Amount DECIMAL(8,2) NOT NULL,\n    Description TEXT,\n    Transaction_method VARCHAR(20) NOT NULL,\n    PRIMARY KEY (Transaction_id),\n    FOREIGN KEY (Account_id) REFERENCES Account(Account_id)\n);\n\nCREATE TABLE Recipient (\n    Transaction_id INT(10) NOT NULL,\n    Recipient_id INT(10) NOT NULL AUTO_INCREMENT,\n    Recipient_name VARCHAR(100) NOT NULL,\n    Email VARCHAR(50) NOT NULL,\n    Phone_number VARCHAR(15),\n    Recipient_type VARCHAR(20) NOT NULL,\n    PRIMARY KEY (Recipient_id),\n    FOREIGN KEY (Transaction_id) REFERENCES Transactions(Transaction_id)\n);\n\nCREATE TABLE Transfer (\n    Recipient_id INT(10) NOT NULL,\n    Transaction_id INT(10) NOT NULL,\n    Account_id INT(10) NOT NULL,\n    Date_ DATE NOT NULL,\n    FOREIGN KEY (Recipient_id) REFERENCES Recipient(Recipient_id),\n    FOREIGN KEY (Transaction_id) REFERENCES Transactions(Transaction_id),\n    FOREIGN KEY (Account_id) REFERENCES Account(Account_id)\n);\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 81,
+                    "column": 28
+                },
+                "position": {
+                    "lineNumber": 81,
+                    "column": 28
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 62,
+                "column": 1
+            },
+            "firstPositionDeltaTop": -3
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 2,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "aef91a7e-a033-4c44-dee4-638963b143bc",
+                            "content": "OK, 1 row affected in 3.02ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 28
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 3,
+                "end": 3,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "1b8930ce-27f2-49d4-f9ad-d2374a77753c",
+                            "content": "OK, 0 records retrieved in 1.15ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 16
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 4,
+                "end": 112,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1050): ClassicSession.run_sql: Table 'users' already exists",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 1,
+                            "content": "MySQL Error (1072): ClassicSession.run_sql: Key column 'Expence_id' doesn't exist in table",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 2,
+                            "content": "MySQL Error (1005): ClassicSession.run_sql: Can't create table `fintrackpro`.`income` (errno: 150 \"Foreign key constraint is incorrectly formed\")",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 3,
+                            "content": "MySQL Error (1005): ClassicSession.run_sql: Can't create table `fintrackpro`.`goal` (errno: 150 \"Foreign key constraint is incorrectly formed\")",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 4,
+                            "content": "MySQL Error (1072): ClassicSession.run_sql: Key column 'Accouunt_id' doesn't exist in table",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 5,
+                            "content": "MySQL Error (1005): ClassicSession.run_sql: Can't create table `fintrackpro`.`bank` (errno: 150 \"Foreign key constraint is incorrectly formed\")",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 6,
+                            "content": "MySQL Error (1064): ClassicSession.run_sql: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')\n)' at line 9",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 282
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 282,
+                            "length": 305
+                        },
+                        "contentStart": 284,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 587,
+                            "length": 263
+                        },
+                        "contentStart": 589,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 850,
+                            "length": 277
+                        },
+                        "contentStart": 852,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1127,
+                            "length": 351
+                        },
+                        "contentStart": 1129,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1478,
+                            "length": 262
+                        },
+                        "contentStart": 1480,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1740,
+                            "length": 374
+                        },
+                        "contentStart": 1742,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 2114,
+                            "length": 355
+                        },
+                        "contentStart": 2116,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 2469,
+                            "length": 366
+                        },
+                        "contentStart": 2471,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 2835,
+                            "length": 359
+                        },
+                        "contentStart": 2837,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 3194,
+                            "length": 1
+                        },
+                        "contentStart": 3193,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}

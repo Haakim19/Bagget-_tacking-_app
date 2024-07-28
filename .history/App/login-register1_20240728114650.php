@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,13 @@
     <link rel="stylesheet" href="login-register.css">
     <title>FinTrackPro-Login/Register</title>
 </head>
+
 <body>
+    <h1 class="app-name">FinTrackPro</h1>
     <!-- register to the Website -->
     <div class="container" id="sign-up" style="display: none;">
         <h1 class="form-title">Register</h1>
-        <form action="login-reggister.php" method="post">
+        <form action="login-reggister.php" method="POST">
             <div class="input-group">
                 <i class="fas fa-user"></i>
                 <input type="text" name="fname" id="fname" placeholder="First Name" required>
@@ -23,14 +26,14 @@
                 <label for="lname">Last Name</label>
             </div>
             <div class="input-group">
-                <i class="fas fa-user"></i>
-                <input type="text" name="userName" id="userName" placeholder="User name" required>
-                <label for="lname">User Name</label>
-            </div>
-            <div class="input-group">
                 <i class="fas fa-envelope"></i>
                 <input type="email" name="email" id="email" placeholder="Email" required>
                 <label for="email">Email</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="userName" id="userName" placeholder="userName" required>
+                <label for="userName">User Name</label>
             </div>
             <div class="input-group">
                 <i class="fas fa-lock"></i>
@@ -55,15 +58,15 @@
             <input type="submit" class="btn" value="Register">
         </form>
         <div class="links">
-            <p>Already have an account?</p> 
-            <button id="sign-in-button"class="btn2">Sign In</button>       
+            <p>Already have an account?</p>
+            <button id="sign-in-button" class="btn2">Login</button>
 
         </div>
     </div>
     <!-- Log in to the website -->
     <div class="container" id="sign-in">
         <h1 class="form-title">Login</h1>
-        <form action="login-reggister.php" method="post">
+        <form action="login-reggister.php" method="POST">
             <div class="input-group">
                 <i class="fas fa-envelope"></i>
                 <input type="email" name="email" id="email" placeholder="Email" required>
@@ -78,10 +81,11 @@
         </form>
         <div class="links">
             <p> Don't have an account?</p>
-            <button id="sign-up-button" class="btn2">Sign Up</button>
+            <button id="sign-up-button" class="btn2">Register</button>
 
         </div>
     </div>
     <script src="login-register.js"></script>
 </body>
+
 </html>

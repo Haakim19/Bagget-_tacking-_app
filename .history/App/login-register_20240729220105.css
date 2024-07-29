@@ -17,6 +17,7 @@ body{
 }
 h1.app-name{
     font-size: 3rem;
+    
     margin-bottom: 20px;
     text-align: center;
     background: linear-gradient(to left, rgba(203, 23, 23, 0.5), rgba(14, 99, 141, 0.5));
@@ -71,7 +72,7 @@ input{
 input:focus{
     background-color: transparent;
     outline: transparent;
-    border-bottom:2px solid #28282B;
+    border-bottom:2px solid #0dbc9c;
 }
 input::placeholder{
     color:transparent;
@@ -99,11 +100,11 @@ input:focus ~ label,input:not(:placeholder-shown) ~ label{
     border:none;
     margin: 1rem 0;
     transition: 0.3s ease all;
-    color:#28282B;
+    color:#fff;
     background: linear-gradient(90deg, #0dbc9c, #0d9bc9);
 }
 .btn:hover{
-    background: linear-gradient(135deg, #0d9bc9, #0dbc9c);
+    background: linear-gradient(90deg, #0d9bc9, #0dbc9c);
 }
 
 .links {
@@ -114,7 +115,7 @@ input:focus ~ label,input:not(:placeholder-shown) ~ label{
     font-weight: bold;
 }
 .links .btn2{
-    color: #28282B;
+    color: #ffffff;
     text-decoration: none;
     transition: 0.3s ease all;
     border:none;

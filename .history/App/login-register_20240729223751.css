@@ -103,7 +103,7 @@ input:focus ~ label,input:not(:placeholder-shown) ~ label{
     background: linear-gradient(90deg, #0dbc9c, #0d9bc9);
 }
 .btn:hover{
-    background: linear-gradient(135deg, #0d9bc9, #0dbc9c);
+    background: linear-gradient(90deg, #0d9bc9, #0dbc9c);
 }
 
 .links {

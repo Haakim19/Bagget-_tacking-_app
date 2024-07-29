@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +11,12 @@
     <link rel="stylesheet" href="login-register.css">
     <title>FinTrackPro-Login/Register</title>
 </head>
+
 <body>
     <!-- register to the Website -->
     <div class="container" id="sign-up" style="display: none;">
         <h1 class="form-title">Register</h1>
-        <form action="login-reggister.php" method="post">
+        <form action="register.php" method="post">
             <div class="input-group">
                 <i class="fas fa-user"></i>
                 <input type="text" name="fname" id="fname" placeholder="First Name" required>
@@ -55,15 +60,15 @@
             <input type="submit" class="btn" value="Register">
         </form>
         <div class="links">
-            <p>Already have an account?</p> 
-            <button id="sign-in-button"class="btn2">Sign In</button>       
+            <p>Already have an account?</p>
+            <button id="sign-in-button" class="btn2">Sign In</button>
 
         </div>
     </div>
     <!-- Log in to the website -->
     <div class="container" id="sign-in">
         <h1 class="form-title">Login</h1>
-        <form action="login-reggister.php" method="post">
+        <form action="login.php" method="post">
             <div class="input-group">
                 <i class="fas fa-envelope"></i>
                 <input type="email" name="email" id="email" placeholder="Email" required>
@@ -82,6 +87,21 @@
 
         </div>
     </div>
-    <script src="login-register.js"></script>
+    <script src="login-register.js">
+        const sign_in_button = document.getElementById('sign-in-button');
+        const sign_up_button = document.getElementById('sign-up-button');
+        const sign_in_form = document.getElementById('sign-in');
+        const sign_up_form = document.getElementById('sign-up');
+
+        sign_up_button.addEventListener('click', function() {
+            sign_in_form.style.display = 'none';
+            sign_up_form.style.display = 'block';
+        })
+        sign_in_button.addEventListener('click', function() {
+            sign_up_form.style.display = 'none';
+            sign_in_form.style.display = 'block';
+        })
+    </script>
 </body>
+
 </html>

@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('Invalid email format.'); window.location.href='login-register.php';</script>";
         exit();
     }
-
+    $hashedPassword = password_hash($Password, PASSWORD_DEFAULT);
     include 'database.connect.php';
 
     // Prepare the SQL statement to prevent SQL injection
@@ -35,9 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Debugging output
             echo "Stored password hash: " . htmlspecialchars($dbPassword) . "<br>";
-            echo "Input password: " . htmlspecialchars($Password) . "<br>";
+            echo "Input password: " . htmlspecialchars(password_hash($Password, PASSWORD_DEFAULT)) . "<br>";
+
             // Verify the password
-            if (password_verify($Password, $dbPassword)) {
+            if ($hashedPassword == $dbPassword) {
                 echo "Login successful";
                 // Redirect to the dashboard
                 header("Location: main-dashboard.php");

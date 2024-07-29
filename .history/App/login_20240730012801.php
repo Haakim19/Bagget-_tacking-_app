@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Debugging output
             echo "Stored password hash: " . htmlspecialchars($dbPassword) . "<br>";
-            echo "Input password: " . htmlspecialchars($Password) . "<br>";
+
             // Verify the password
             if (password_verify($Password, $dbPassword)) {
                 echo "Login successful";
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: main-dashboard.php");
                 exit();
             } else {
-                // echo "<script>alert('Username or password is incorrect.'); window.location.href='login-register.php';</script>";
+                echo "<script>alert('Username or password is incorrect.'); window.location.href='login-register.php';</script>";
             }
         } else {
             echo "<script>alert('Username or password is incorrect.'); window.location.href='login-register.php';</script>";

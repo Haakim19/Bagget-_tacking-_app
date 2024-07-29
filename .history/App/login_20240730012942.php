@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Debugging output
             echo "Stored password hash: " . htmlspecialchars($dbPassword) . "<br>";
             echo "Input password: " . htmlspecialchars($Password) . "<br>";
+
             // Verify the password
             if (password_verify($Password, $dbPassword)) {
                 echo "Login successful";

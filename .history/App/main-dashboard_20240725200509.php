@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main-dashboard.css">
+    <title>Document</title>
+</head>
+<body>
+<main>
+    <nav class="navigation-bar"></nav>
+    <div class="left-sidebar">
+        <h1>Dashboard</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Transections</a></li>
+            <li><a href="#">Expence</a></li>
+            <li><a href="#">Account</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+        <p>All Rights Resserved <a href="#">FinTrackPro</a> </p>
+    </div>
+    <div class="middlebar">
+        
+    </div>
+    <div class="right-sidebar">right-sidebar</div>
+
+</main>
+</body>
+</html>

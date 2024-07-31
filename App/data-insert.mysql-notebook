@@ -1,0 +1,254 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "USE fintrackpro;\nSELECT * FROM users;\nSELECT * FROM account;\nSELECT * FROM transactions;\nSELECT * FROM transfer;\nSELECT * FROM income;\nSELECT * FROM expense;\nSELECT * FROM recipient;\nSELECT * FROM bank;\nSELECT * FROM bank_card;\nSELECT * FROM goal;\n\n#creating a trigger to auto incriment the data annd time in income table\nDELIMITER $$\n\nCREATE TRIGGER set_date_time_before_insert\nBEFORE INSERT ON Income\nFOR EACH ROW\nBEGIN\n    SET NEW.date_ = CURRENT_DATE;\n    SET NEW.time_ = CURRENT_TIME;\nEND $$\n\nDELIMITER ;\n\n#creating a trigger to auto incriment the data annd time in expence table\nDELIMITER $$\n\nCREATE TRIGGER set_date_time_before_insert_to_expence\nBEFORE INSERT ON expense\nFOR EACH ROW\nBEGIN\n    SET NEW.date_ = CURRENT_DATE;\n    SET NEW.time_ = CURRENT_TIME;\nEND $$\n\nDELIMITER ;\n\nINSERT INTO users VALUE \n('U00001' ,'haakimaj', 'haakim', 'ahamed', '02/13/2003', 'haakim@gmail.com' , 'haakimaj', '0757956078', '150/watadeniya,kandy'),\n('U00002' ,'zoro012', 'Roronoa', 'Zoro', '11/11/1999', 'zoro@example.com' , 'zoro123', '1234567890', 'colombo-01'),\n('U00003' , 'abdula124', 'Abdula', 'Zulkifl', '01/25/2000', 'abdula@example.com' , 'zulkifl123', '2345678910', 'kandy road,nawalapitiya'),\n('U00004' , '', '', 'Zoro', '11/11/1999', 'zoro@gmail.com' , 'zoro123', '1234567890', 'colombo-01');\n\n\nDELETE FROM income;\n\nINSERT INTO income(user_id,amount,description) VALUE\n('U00001', '1000', 'Petrol'),\n('U00001', '500', 'food'),\n('U00001', '', 'Petrol'),\n\nUser_id CHAR(6) NOT NULL, \n    Income_id INT(10) NOT NULL AUTO_INCREMENT,\n    Amount DECIMAL(8,2),\n    Description TEXT,\n    date_ DATE,\n    time_ TIME,",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 26,
+                    "column": 68
+                },
+                "position": {
+                    "lineNumber": 26,
+                    "column": 68
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 9,
+                "column": 1
+            },
+            "firstPositionDeltaTop": -11
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 58,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "81700bef-d567-43a7-9914-eb53f8a2840e",
+                            "content": "OK, 1 row affected in 1.995ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 16
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 16,
+                            "length": 21
+                        },
+                        "contentStart": 17,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 37,
+                            "length": 23
+                        },
+                        "contentStart": 38,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 60,
+                            "length": 28
+                        },
+                        "contentStart": 61,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 88,
+                            "length": 24
+                        },
+                        "contentStart": 89,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 112,
+                            "length": 22
+                        },
+                        "contentStart": 113,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 134,
+                            "length": 23
+                        },
+                        "contentStart": 135,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 157,
+                            "length": 25
+                        },
+                        "contentStart": 158,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 182,
+                            "length": 20
+                        },
+                        "contentStart": 183,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 202,
+                            "length": 25
+                        },
+                        "contentStart": 203,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 227,
+                            "length": 20
+                        },
+                        "contentStart": 228,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 247,
+                            "length": 75
+                        },
+                        "contentStart": 246,
+                        "state": 3
+                    },
+                    {
+                        "delimiter": "$$",
+                        "span": {
+                            "start": 322,
+                            "length": 12
+                        },
+                        "contentStart": 322,
+                        "state": 4
+                    },
+                    {
+                        "delimiter": "$$",
+                        "span": {
+                            "start": 334,
+                            "length": 162
+                        },
+                        "contentStart": 336,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 496,
+                            "length": 13
+                        },
+                        "contentStart": 498,
+                        "state": 4
+                    },
+                    {
+                        "delimiter": "$$",
+                        "span": {
+                            "start": 509,
+                            "length": 88
+                        },
+                        "contentStart": 585,
+                        "state": 4
+                    },
+                    {
+                        "delimiter": "$$",
+                        "span": {
+                            "start": 597,
+                            "length": 174
+                        },
+                        "contentStart": 599,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 771,
+                            "length": 13
+                        },
+                        "contentStart": 773,
+                        "state": 4
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 784,
+                            "length": 511
+                        },
+                        "contentStart": 786,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1295,
+                            "length": 22
+                        },
+                        "contentStart": 1299,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1317,
+                            "length": 291
+                        },
+                        "contentStart": 1319,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}

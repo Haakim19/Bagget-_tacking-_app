@@ -82,6 +82,7 @@ CREATE TABLE Bank_card (
 CREATE TABLE Transactions (
     Account_id INT(10) NOT NULL,
     Transaction_id INT(10) NOT NULL AUTO_INCREMENT,
+    User_Account_number BIGINT(16) NOT NULL,
     Transaction_name VARCHAR(50) NOT NULL,
     Amount DECIMAL(8,2) NOT NULL,
     Description TEXT,

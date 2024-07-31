@@ -1,0 +1,306 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "USE fintrackpro;\nSELECT * FROM users;\nSELECT * FROM account;\nSELECT * FROM transactions;\nSELECT * FROM transfer;\nSELECT * FROM income;\nSELECT * FROM expense;\nSELECT * FROM recipient;\nSELECT * FROM bank;\nSELECT * FROM bank_card;\nSELECT * FROM goal;\n\n#creating a trigger to auto incriment the data annd time in income table\nDELIMITER $$\n\nCREATE TRIGGER set_date_time_before_insert\nBEFORE INSERT ON Income\nFOR EACH ROW\nBEGIN\n    SET NEW.date_ = CURRENT_DATE;\n    SET NEW.time_ = CURRENT_TIME;\nEND $$\n\nDELIMITER ;\n\n#creating a trigger to auto incriment the data annd time in expence table\nDELIMITER $$\n\nCREATE TRIGGER set_date_time_before_insert_to_expence\nBEFORE INSERT ON expense\nFOR EACH ROW\nBEGIN\n    SET NEW.date_ = CURRENT_DATE;\n    SET NEW.time_ = CURRENT_TIME;\nEND $$\n\nDELIMITER ;\n-- Users Table Data\nINSERT INTO users VALUE \n('U00001' ,'haakimaj', 'haakim', 'ahamed', '02/13/2003', 'haakim@gmail.com' , 'haakimaj', '0757956078', '150/watadeniya,kandy'),\n('U00002' ,'zoro012', 'Roronoa', 'Zoro', '11/11/1999', 'zoro@example.com' , 'zoro123', '1234567890', 'colombo-01'),\n('U00003' , 'abdula124', 'Abdula', 'Zulkifl', '01/25/2000', 'abdula@example.com' , 'zulkifl123', '2345678910', 'kandy road,nawalapitiya');\n\n\n-- Expense Table Data\nINSERT INTO Expense (User_id, Expense_name, Amount, Description)\nVALUES \n('U00001', 'Groceries', 25000.00, 'Weekly grocery shopping'),\n('U00001', 'Electricity Bill', 5000.00, 'Monthly electricity bill payment'),\n('U00001', 'Internet Bill', 5000.00, 'Monthly internet subscription'),\n('U00002', 'Dining Out', 3000.00, 'Dinner at a restaurant'),\n('U00002', 'Fuel', 5000.00, 'Fuel for the car'),\n('U00002', 'Gym Membership', 2500.00, 'Monthly gym membership fee'),\n('U00003', 'Books', 2000.00, 'Purchased books'),\n('U00003', 'Rent', 10000.00, 'Monthly rent payment'),\n('U00003', 'Utilities', 4500.00, 'Monthly utilities payment');\n\n-- Income Table Data\nINSERT INTO Income (User_id, Amount, Description)\nVALUES \n('U00001', 150000.00, 'Salary for July'),\n('U00001', 20000.00, 'Freelance Project'),\n('U00001', 10000.00, 'Stock Dividends'),\n('U00002', 200000.00, 'Salary for July'),\n('U00002', 10000.00, 'Bonus'),\n('U00002', 15000.00, 'Interest from savings'),\n('U00003', 180000.00, 'Salary for July'),\n('U00003', 25000.00, 'Part-time Job'),\n('U00003', 12000.00, 'Investment Returns');\n\n-- Goal Table Data\nINSERT INTO Goal (User_id, Goal_name, Description, Start_date, End_date)\nVALUES \n('U00001', 'Vacation Fund', 'Saving for a vacation', '2024-01-01', '2024-12-31'),\n('U00001', 'Emergency Fund', 'Building an emergency fund', '2024-01-01', '2024-12-31'),\n('U00001', 'New Laptop', 'Saving to buy a new laptop', '2024-01-01', '2024-09-30'),\n('U00002', 'Buy a Car', 'Saving for a new car', '2024-01-01', '2024-12-31'),\n('U00002', 'Home Renovation', 'Saving for home renovation', '2024-01-01', '2024-12-31'),\n('U00002', 'Health Fund', 'Building a health fund', '2024-01-01', '2024-06-30'),\n('U00003', 'Education Fund', 'Saving for further education', '2024-01-01', '2024-12-31'),\n('U00003', 'Wedding Fund', 'Saving for wedding expenses', '2024-01-01', '2024-12-31'),\n('U00003', 'Travel Fund', 'Saving for a world trip', '2024-01-01', '2024-12-31');\n\n-- Account Table Data\nINSERT INTO Account (User_id, Account_number, Account_type, Holder_name, branch_name)\nVALUES \n('U00001', 1234567890123456, 'Savings', 'Haakim Ahamed', 'Kandy Main Branch'),\n('U00001', 2345678901234567, 'Current', 'Haakim Ahamed', 'Colombo Branch'),\n('U00002', 4567890123456789, 'Savings', 'Roronoa Zoro', 'Colombo Main Branch'),\n('U00002', 5678901234567890, 'Current', 'Roronoa Zoro', 'Galle Branch'),\n('U00003', 7890123456789012, 'Savings', 'Abdula Zulkifl', 'Nawalapitiya Branch'),\n('U00003', 8901234567890123, 'Current', 'Abdula Zulkifl', 'Matara Branch');\n\n-- Bank Table Data\nINSERT INTO Bank (Account_id, Bank_name, Bank_type)\nVALUES \n(1, 'Bank of Ceylon', 'Public Sector Bank'),\n(2, 'Commercial Bank', 'Private Sector Bank'),\n(3, 'People\\'s Bank', 'Public Sector Bank'),\n(4, 'Sampath Bank', 'Private Sector Bank'),\n(5, 'Hatton National Bank', 'Private Sector Bank'),\n(6, 'DFCC Bank', 'Private Sector Bank');\n-- Bank_card Table Data\nINSERT INTO Bank_card (User_id, Bank_id, Bank_card_number, Emv_number, Exp_date)\nVALUES \n('U00001', 1, 1234567812345678, 123, '2026-07-31'),\n('U00001', 2, 2345678923456789, 234, '2025-12-31'),\n('U00002', 3, 4567890145678901, 456, '2025-08-31'),\n('U00002', 4, 5678901256789012, 567, '2026-09-30'),\n('U00003', 5, 7890123478901234, 789, '2025-11-30'),\n('U00003', 6, 8901234589012345, 890, '2026-05-31');\n\n-- Transactions Table Data\nINSERT INTO Transactions (Account_id, User_Account_number, Transaction_name, Amount, Description, Transaction_method)\nVALUES \n(1, 1234567890123456, 'Grocery Shopping', 25000.00, 'Purchased groceries at supermarket', 'Card Payment'),\n(1, 1234567890123456, 'Utility Payment', 5000.00, 'Paid electricity bill', 'Online Transfer'),\n(1, 1234567890123456, 'Internet Subscription', 5000.00, 'Paid monthly internet bill', 'Card Payment'),\n(3, 4567890123456789, 'Restaurant Bill', 3000.00, 'Paid for dinner at restaurant', 'Card Payment'),\n(3, 4567890123456789, 'Fuel Payment', 5000.00, 'Paid for car fuel', 'Online Transfer'),\n(3, 4567890123456789, 'Gym Fee', 2500.00, 'Paid for monthly gym membership', 'Card Payment'),\n(5, 7890123456789012, 'Book Purchase', 2000.00, 'Purchased books', 'Cash Payment'),\n(6, 8901234567890123, 'Rent Payment', 10000.00, 'Paid monthly rent', 'Online Transfer'),\n(6, 8901234567890123, 'Utility Payment', 4500.00, 'Paid monthly utilities', 'Card Payment');\n\n-- Recipient Table Data\nINSERT INTO Recipient (Transaction_id, Recipient_name, Recipient_account_number, Email, Phone_number, Recipient_type)\nVALUES \n(1, 'Supermarket', 123456789012, 'supermarket@example.com', '0211234567', 'Business'),\n(2, 'Electricity Board', 234567890123, 'electricity@example.com', '0212345678', 'Business'),\n(3, 'ISP', 345678901234, 'isp@example.com', '0213456789', 'Business'),\n(4, 'Restaurant', 456789012345, 'restaurant@example.com', '0211234567', 'Business'),\n(5, 'Fuel Station', 567890123456, 'fuelstation@example.com', '0212345678', 'Business'),\n(6, 'Gym', 678901234567, 'gym@example.com', '0213456789', 'Business'),\n(7, 'Bookstore', 789012345678, 'bookstore@example.com', '0214567890', 'Business'),\n(8, 'Landlord', 890123456789, 'landlord@example.com', '0215678901', 'Individual'),\n(9, 'Utility Provider', 901234567890, 'utility@example.com', '0216789012', 'Business');\n\n-- Transfer Table Data\nINSERT INTO Transfer (Recipient_id, Transaction_id, Account_id, Date_)\nVALUES \n(1, 1, 1, '2024-07-01'),\n(2, 2, 1, '2024-07-05'),\n(3, 3, 1, '2024-07-10'),\n(4, 4, 3, '2024-07-02'),\n(5, 5, 3, '2024-07-06'),\n(6, 6, 3, '2024-07-12'),\n(7, 7, 5, '2024-07-03'),\n(8, 8, 6, '2024-07-07'),\n(9, 9, 6, '2024-07-11');",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 59,
+                    "column": 50
+                },
+                "position": {
+                    "lineNumber": 59,
+                    "column": 50
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 40,
+                "column": 1
+            },
+            "firstPositionDeltaTop": -14
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 150,
+                "language": "mysql",
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 16
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 16,
+                            "length": 21
+                        },
+                        "contentStart": 17,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 37,
+                            "length": 23
+                        },
+                        "contentStart": 38,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 60,
+                            "length": 28
+                        },
+                        "contentStart": 61,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 88,
+                            "length": 24
+                        },
+                        "contentStart": 89,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 112,
+                            "length": 22
+                        },
+                        "contentStart": 113,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 134,
+                            "length": 23
+                        },
+                        "contentStart": 135,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 157,
+                            "length": 25
+                        },
+                        "contentStart": 158,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 182,
+                            "length": 20
+                        },
+                        "contentStart": 183,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 202,
+                            "length": 25
+                        },
+                        "contentStart": 203,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 227,
+                            "length": 20
+                        },
+                        "contentStart": 228,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 247,
+                            "length": 75
+                        },
+                        "contentStart": 246,
+                        "state": 3
+                    },
+                    {
+                        "delimiter": "$$",
+                        "span": {
+                            "start": 322,
+                            "length": 12
+                        },
+                        "contentStart": 322,
+                        "state": 4
+                    },
+                    {
+                        "delimiter": "$$",
+                        "span": {
+                            "start": 334,
+                            "length": 162
+                        },
+                        "contentStart": 336,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 496,
+                            "length": 13
+                        },
+                        "contentStart": 498,
+                        "state": 4
+                    },
+                    {
+                        "delimiter": "$$",
+                        "span": {
+                            "start": 509,
+                            "length": 88
+                        },
+                        "contentStart": 585,
+                        "state": 4
+                    },
+                    {
+                        "delimiter": "$$",
+                        "span": {
+                            "start": 597,
+                            "length": 174
+                        },
+                        "contentStart": 599,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 771,
+                            "length": 13
+                        },
+                        "contentStart": 773,
+                        "state": 4
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 784,
+                            "length": 429
+                        },
+                        "contentStart": 805,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1213,
+                            "length": 652
+                        },
+                        "contentStart": 1238,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1865,
+                            "length": 451
+                        },
+                        "contentStart": 1888,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 2316,
+                            "length": 861
+                        },
+                        "contentStart": 2337,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 3177,
+                            "length": 583
+                        },
+                        "contentStart": 3201,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 3760,
+                            "length": 354
+                        },
+                        "contentStart": 3781,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 4114,
+                            "length": 425
+                        },
+                        "contentStart": 4139,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 4539,
+                            "length": 1007
+                        },
+                        "contentStart": 4568,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 5546,
+                            "length": 900
+                        },
+                        "contentStart": 5572,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 6446,
+                            "length": 328
+                        },
+                        "contentStart": 6471,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}

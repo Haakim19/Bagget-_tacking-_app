@@ -7,7 +7,7 @@ CREATE TABLE Users (
     Last_name VARCHAR(100) NOT NULL,
     DOB DATE,
     Email VARCHAR(100) NOT NULL UNIQUE,
-    pwd VARCHAR(255) NOT NULL,
+    pwd VARCHAR(15) NOT NULL,
     Phone_number VARCHAR(15) NOT NULL,
     Address VARCHAR(100) NOT NULL,
     PRIMARY KEY (User_id)
@@ -82,6 +82,7 @@ CREATE TABLE Bank_card (
 CREATE TABLE Transactions (
     Account_id INT(10) NOT NULL,
     Transaction_id INT(10) NOT NULL AUTO_INCREMENT,
+    User_Account_number BIGINT(16) NOT NULL,
     Transaction_name VARCHAR(50) NOT NULL,
     Amount DECIMAL(8,2) NOT NULL,
     Description TEXT,
